@@ -53,6 +53,8 @@ a {
   font-family: $fonts;
   text-decoration: none;
   color: $text-color;
+  cursor: pointer;
+  
 }
 
 p {
@@ -293,6 +295,8 @@ a.main-btn {
     box-shadow: 5px 5px 7px gray;
     transition: 0.7s;
     opacity: 0.8;
+    cursor: pointer;
+
   }
 }
 

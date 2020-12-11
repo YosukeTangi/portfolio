@@ -12,6 +12,7 @@ a {
   font-family: "Prompt", sans-serif;
   text-decoration: none;
   color: #282928;
+  cursor: pointer;
 }
 
 p {
@@ -267,6 +268,7 @@ a.main-btn:hover {
   box-shadow: 5px 5px 7px gray;
   transition: 0.7s;
   opacity: 0.8;
+  cursor: pointer;
 }
 
 .about-img {
