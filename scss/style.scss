@@ -1,0 +1,606 @@
+//カラー
+
+$text-color: #282928;
+
+//フォント
+$fonts: "Prompt", sans-serif;
+$section-fonts: 30px;
+//余白
+
+//button
+
+
+//ブレークポイント
+//マップ型変数breakpointsを定義
+$breakpoints: (
+  //キー値
+  "sm": "screen and (max-width: 767px)",//767px以下（スマホ）用の表示
+  "md": "screen and (min-width: 768px)" //768px以上（タブレット・PC）用の表示
+) !default;
+
+//メディアクエリ用のmixinを定義。デフォ値はmd
+@mixin mq($breakpoint: md) {
+  //map-get(マップ型変数, キー)で値を取得
+  @media #{map-get($breakpoints, $breakpoint)} {
+    //この中をカスタムできる
+    @content;
+  }
+}
+
+//使用例
+// .header {
+//   height:100px; //ＰＣ用の表示
+
+//   @include mq(sm) {
+//     height: 60px; //スマホの時だけ高さを60pxに
+//   }
+// }
+
+//ハンバーガーメニューの三、pc版非表示
+
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+body {
+  font-family: $fonts;
+  line-height: 1.5em;
+}
+
+a {
+  font-family: $fonts;
+  text-decoration: none;
+  color: $text-color;
+}
+
+p {
+  line-height: 1.5em;
+}
+
+//section共通クラス
+
+.section-title {
+  text-align: center;
+  font-family: $fonts;
+  font-size: $section-fonts;
+  margin-top: 50px;
+  font-weight: 900;
+  @include mq(md) {
+    font-size: 40px;
+
+  }
+}
+
+//header
+.header-logo {
+  width: 100px;
+  height: auto;
+  display: none;
+  @include mq(md) {
+    display: none;
+  }
+}
+
+header {
+  height: 100px;
+  background-color: $text-color;
+  position: fixed;
+  width: 100%;
+
+}
+
+.header-container {
+  padding-top: 33px;
+}
+
+//nav
+
+.pc-header {
+  display: none;
+  @include mq(md) {
+    display: block;
+  }
+}
+.pc-header ul {
+  @include mq(md) {
+  display: flex;
+  justify-content: space-around;
+  }
+}
+a.header-nav {
+  @include mq(md) {
+    margin-top: 40px;
+    color: #ffffff;
+  }
+  
+  &:hover {
+    @include mq(md) {
+      opacity: 0.7;
+    }
+  }
+}
+
+
+.pc-header a {
+  @include mq(md) {
+    font-size: 25px;
+    font-weight: 900;
+  }
+}
+
+
+#nav{
+  position: absolute;
+  height: 50vh;
+  width: 40%;
+  right:40%;
+  top: 0;
+  background: $text-color;
+  transition: 0.7s;
+@include mq(md) {
+  display: none;
+}
+}
+#nav ul{
+  padding-top: 80px;
+}
+#nav ul li{
+  list-style-type: none;
+  font-size: 20px;
+}
+#nav a{
+  display: block;
+  text-decoration: none;
+  color:#ffffff;
+  margin: 0 15px;
+  padding: 10px;
+  transition: .5s;
+}
+#nav li a:hover{
+  color:$text-color;
+  background: #ffffff;;
+  border-bottom: none;
+}
+#hamburger {
+  display: block;
+  position: absolute;
+  top: 20px;
+  left: 300px;
+  width: 50px;
+  height: 44px;
+  cursor: pointer;
+  transition: 1s;
+
+  @include mq(md){
+    display: none;
+  }
+}
+.inner_line {
+  display: block;
+  position: absolute;
+  left: 0;
+  width: 50px;
+  height: 3px;
+  background-color:#ffffff;
+  transition: 1s;
+  border-radius: 4px;
+}
+#line1 {
+  top: 0;
+}
+#line2 {
+  top: 20px;
+}
+#line3 {
+  bottom: 0px;
+}
+
+.in{
+  transform: translateX(100%);
+  
+}
+
+.line_1,.line_2,.line_3{
+  background: #ffffff;
+}
+.line_1 {
+  transform: translateY(20px) rotate(-45deg);
+  top: 0;
+}
+.line_2 {
+  opacity: 0;
+}
+.line_3 {
+  
+  transform: translateY(-20px)  rotate(45deg);
+  bottom: 0;
+}
+
+//main
+.main-visual {
+  height: 512px;
+  
+  @include mq(md) {
+    height: 700px;
+    
+  }
+}
+
+.main-visual p {
+  font-size: 20px;
+  margin-top: 25px;
+  text-align: center;
+  color: $text-color;
+  @include mq(md) {
+    font-size: 25px;
+    margin-top: 70px;
+
+  }
+}
+
+h1 {
+  text-align: center;
+  font-size: 40px;
+  margin-top: 243px;
+  color: #ffffff;
+  font-weight: 900;
+  @include mq(md) {
+    font-size: 60px;
+    
+    
+  }
+}
+
+.main-visual {
+  overflow: hidden;
+  background-image: url(../img/ales-nesetril-Im7lZjxeLhg-unsplash.jpg);
+  height: 800px;
+  width: 100%;
+  background-size: cover;
+  background-position:center;
+
+
+  @include mq(md) {
+    
+  }
+}
+
+
+.main-visual p {
+  font-weight: 700;
+  color: #ffffff;
+}
+
+a.main-btn {
+  font-family: "Prompt", sans-serif;
+  font-size: 20px;
+  padding: 20px 80px;
+  border: solid 2px #ffffff;
+  border-radius: 10px;
+  display: block;
+  text-align: center;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 5%;
+  color:#ffffff;
+  
+  &:hover {
+    color:$text-color;
+    background-color:#ffffff;
+    margin-bottom: 5px;
+    box-shadow: 5px 5px 7px gray;
+    transition: 0.7s;
+    opacity: 0.8;
+  }
+}
+
+
+
+//about
+
+.about-img{
+  width: 100%;
+  display: block;
+  margin: 25px auto;
+
+  @include mq(md) {
+    width: 500px;
+    
+  }
+}
+
+.about-container {
+  @include mq(md) {
+    display: flex;
+  justify-content: center;
+  }
+  
+}
+.about p {
+  font-size: 18px;
+  margin-top: 25px;
+  font-weight: 500;
+  text-align:center;
+  @include mq(md) {
+    font-size: 20px;
+    line-height: 1.6em;
+    text-align-last: left;
+    margin-left: 30px;
+  }
+}
+.sns-logo {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 10px;
+  @include mq(md) {
+    margin-top: 10px;
+    
+  }
+  }
+  
+
+.twitter-logo {
+  width: 50px;
+  margin-right: 10px;
+}
+
+.instagram-logo {
+  width: 50px;
+  margin-left: 10px;
+}
+
+.about-left {
+  
+  @include mq(md) {
+    
+  }
+}
+
+.about-right {
+
+  @include mq(md) {
+    
+  }
+}
+
+//skill
+.skill img {
+  width: 264px;
+  display: block;
+  margin: 25px auto;
+  width: 100%;
+  @include mq(md) {
+    width: 600px;
+
+  }
+}
+
+.skill p {
+  text-align:center;
+  font-size: 18px;
+  
+  @include mq(md) {
+    font-size: 20px;
+    margin-top: 30px;
+    margin-left: 30px;
+    text-align: left;
+    line-height:2.5em;
+  }
+}
+
+
+
+.skill-container {
+  @include mq(md) {
+    display: flex;
+    justify-content: center;
+  }
+  
+}
+//production
+
+.card img {
+  max-width: 100%;
+  margin:25px auto;
+}
+
+.card p {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 18px;
+  word-break: break-all;
+}
+
+article {
+  margin: 20px;
+}
+
+.card-container ul {
+
+ @include mq(md) {
+   display: flex;
+   flex-wrap: wrap;
+ }
+  
+}
+
+.card-container li {
+  @include mq(md) {
+    width: calc(100%/3);
+    box-sizing: border-box;
+    
+  }
+}
+//hairstyle
+
+.hair-style img {
+  widows: 100%;
+  display: block;
+  margin: 25px auto;
+  @include mq(md) {
+    width: 700px;
+    text-align: center;
+    margin: 50px auto;
+  }
+
+}
+
+//contact
+
+.contact {
+  height: 500px;
+}
+
+
+input {
+  display: block;
+  border: none;
+  outline: none;
+}
+
+textarea {
+  display: block;
+  border: none;
+  outline: none;
+}
+
+.name {
+  display: flex;
+  margin-top: 30px;
+  justify-content: space-around;
+  color: $text-color;
+  @include mq(md) {
+    justify-content: center;
+    
+  }
+}
+
+.last_name {
+  border:solid 2px $text-color;
+  border-radius: 10px;
+  width: 150px;
+  height: 40px;
+  text-align:left;
+  padding-left: 20px;
+  color: $text-color;
+  @include mq(md) {
+    margin-right: 20px;
+    width: 250px;
+  }
+}
+
+.first_name {
+
+  border:solid 2px $text-color;
+  border-radius: 10px;
+  width: 150px;
+  height: 40px;
+  text-align:left;
+  padding-left: 20px;
+  color: $text-color;
+
+  @include mq(md) {
+    margin-left: 20px;
+    width: 250px;
+  }
+}
+
+.form_email {
+  text-align:left;
+  padding-left :20px ;
+  margin-top: 25px;
+  margin-left: auto;
+  margin-right: auto;
+  border:solid 2px $text-color;
+  border-radius: 10px;
+  width: 354px;
+  height: 40px;
+  color: $text-color;
+
+  @include mq(md) {
+    width: 540px;
+  }
+}
+
+.message {
+  text-align:left;
+  padding-left :20px ;
+  margin-top: 25px;
+  margin-left: auto;
+  margin-right: auto;
+  border:solid 2px $text-color;
+  border-radius: 10px;
+  width: 354px;
+  height: 200px;
+  color: $text-color;
+  @include mq(md) {
+    width: 540px;
+  }
+}
+
+.submit {
+  text-align:left;
+  padding-left :20px ;
+  margin-top: 25px;
+  margin-left: auto;
+  margin-right: auto;
+  border:solid 2px $text-color;
+  border-radius: 10px;
+  width: 354px;
+  height: 50px;
+  background: #ffffff;
+  color: $text-color;
+  @include mq(md) {
+    width: 540px;
+  }
+}
+
+.submit:hover {
+  @include mq(md) {
+  background-color: $text-color;
+  transition: 0.7s;
+  color: #ffffff;
+  box-shadow: 5px 5px 7px gray;
+  }
+  
+} 
+
+//footer
+
+footer {
+  background-color: $text-color;
+  height: 120px;
+  
+}
+
+footer p {
+  text-align: center;
+  font-size: 15px;
+  
+  color: #ffffff;
+  
+}
+footer ul {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  
+}
+
+.footer-instagram-logo {
+  width: 50px;
+  margin-left: 10px;
+  margin-top: 20px;
+}
+.footer-twitter-logo {
+  width: 50px;
+  margin-right: 10px;
+  margin-top: 20px;
+}
+
+footer li {
+  text-align: center;
+}
